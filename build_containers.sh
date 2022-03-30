@@ -11,6 +11,6 @@ pushd versions
 for version in gcc-*; do
     echo "***************** Building: $version *****************"
     docker build -t $version $version/
-    echo "alias $version='docker run -ti --rm --mount type=bind,source=\"\$(pwd)\",target=/mnt/bind-root $version'" >> ../aliases.txt
+    echo "alias $version='docker run --env LINES=`tput lines` --env COLUMNS=`tput cols` -ti --rm --mount type=bind,source=\"\$(pwd)\",target=/mnt/bind-root $version'" >> ../aliases.txt
 done
 popd
