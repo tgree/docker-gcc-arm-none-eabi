@@ -49,3 +49,6 @@ RUN tar xj -C /usr --strip 1 -f /tmp/gcc-arm-none-eabi-9-2019-q4-major-aarch64-l
 
 # Select the proper arch for the rest of this.
 FROM dev-base-${TARGETOS}_${TARGETARCH}
+
+# Allow gdb to source .gdbinit file from /mnt/bind-root.
+RUN echo "add-auto-load-safe-path /mnt/bind-root/.gdbinit" >> /root/.gdbinit
