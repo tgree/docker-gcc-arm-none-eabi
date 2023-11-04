@@ -19,7 +19,8 @@ RUN apt-get update -y                                   \
     make                                                \
     man                                                 \
     manpages                                            \
-    manpages-dev
+    manpages-dev                                        \
+    python3
 
 # Create the bind-mount directory.
 RUN mkdir -p /mnt/bind-root
