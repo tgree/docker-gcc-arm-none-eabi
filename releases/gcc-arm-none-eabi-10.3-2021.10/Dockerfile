@@ -1,7 +1,7 @@
 # Copyright (c) 2022 by Terry Greeniaus.
 # Build with: docker build -t gcc-arm-none-eabi-10.3.1 .
 # Run with: docker run -ti --rm --mount type=bind,source="$(pwd)",target=/mnt/bind-root gcc-arm-none-eabi-10.3.1 <cmd goes here>
-FROM ubuntu:20.04 AS dev-base
+FROM ubuntu:22.04 AS dev-base
 
 # Set the locale.
 ENV LANG C.UTF-8
@@ -12,6 +12,7 @@ RUN yes | unminimize
 # Install the standard tools we would like to export.
 RUN apt-get update -y                                   \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y   \
+    bzip2                                               \
     g++                                                 \
     gcc                                                 \
     gdb-multiarch                                       \
@@ -19,7 +20,8 @@ RUN apt-get update -y                                   \
     make                                                \
     man                                                 \
     manpages                                            \
-    manpages-dev
+    manpages-dev                                        \
+    python3
 
 # Create the bind-mount directory.
 RUN mkdir -p /mnt/bind-root
