@@ -1,3 +1,4 @@
 *.swp
 *.raw
 aliases.txt
+.DS_Store
